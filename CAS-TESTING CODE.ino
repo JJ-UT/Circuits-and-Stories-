@@ -18,7 +18,6 @@ Servo tServo;
 
 void setup() {
 
-  pinMode(buzzer, OUTPUT);
   pinMode(ledPin, OUTPUT);
   pinMode(buttonPin, INPUT);
 
