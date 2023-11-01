@@ -11,11 +11,20 @@ bool isOn = false;
 //A rubber room with rats,and rats make me crazy. 
 //Crazy? I was crazy once. They locked me in a ro- 
 
+//SERVOS
+
+#include <Servo.h>
+
+Servo tServo;
+
+
+
 void setup() {
 
-  pinMode(buzzer, OUTPUT);
   pinMode(ledPin, OUTPUT);
   pinMode(buttonPin, INPUT);
+
+  tServo.attach(9);
  
 }
 
@@ -30,12 +39,13 @@ void loop() {
   }
 
   if (isOn == true) {
+    tServo.write(180); // DO NOT GO PAST 180
 
     
 
   } else {
     //OFF
-
+    tServo.write(0);
   }
 
   prevButtonState = buttonState;
