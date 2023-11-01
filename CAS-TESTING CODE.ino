@@ -8,11 +8,21 @@ int buttonState = 0;
 bool isOn = false;
 
 
+//SERVOS
+
+#include <Servo.h>
+
+Servo tServo;
+
+
+
 void setup() {
 
   pinMode(buzzer, OUTPUT);
   pinMode(ledPin, OUTPUT);
   pinMode(buttonPin, INPUT);
+
+  tServo.attach(9);
  
 }
 
@@ -27,12 +37,13 @@ void loop() {
   }
 
   if (isOn == true) {
+    tServo.write(180); // DO NOT GO PAST 180
 
     
 
   } else {
     //OFF
-
+    tServo.write(0);
   }
 
   prevButtonState = buttonState;
