@@ -2,13 +2,15 @@
 
 const int ledPin = 9;
 
-int pos;
+/// Buttons///////////
 
 const int button1 = 1;
 const int button2 = 2;
 const int button3 = 3;
 const int button4 = 4;
 const int button5 = 5;
+
+
 
 
 int prevButtonState1 = 0;
@@ -49,7 +51,15 @@ bool event5 = false;
 #include <Servo.h>
 
 int servDelay = 5;
-Servo tServo;
+Servo servoE1;
+Servo servoE2;
+Servo servoE3;
+Servo servoE4;
+Servo servoE5;
+
+int pos;
+
+
 
 //# variables
 int angle;
@@ -66,9 +76,17 @@ void setup() {
   pinMode(button1, INPUT);
   pinMode(button2, INPUT);
   pinMode(button3, INPUT);
+  pinMode(button4, INPUT);
+  pinMode(button5, INPUT);
+
+
   Serial.begin(9600);
 
-  tServo.attach(9);  /// SERVO PIN
+  servoE1.attach(6);   /// SERVO PIN
+  servoE1.attach(7);   /// SERVO PIN
+  servoE1.attach(8);   /// SERVO PIN
+  servoE1.attach(9);   /// SERVO PIN
+  servoE1.attach(10);  /// SERVO PIN
 }
 
 
@@ -78,6 +96,8 @@ void loop() {
 
   ///// EVENT 1//////////////////////////
   //////////////////////////////////////
+
+  // If u want to edit any code and test buttons, place them in the respective "ON" location for each button.//
 
   //ON
   if (buttonState1 != prevButtonState1) {
@@ -92,18 +112,18 @@ void loop() {
 
 
     for (pos = 0; pos <= 120; pos = pos + 1.5) {
-      tServo.write(pos);
+      servoE1.write(pos);
       delay(servDelay);
     }
 
     for (pos = 120; pos >= 0; pos = pos - 1.5) {
-      tServo.write(pos);
+      servoE1.write(pos);
       delay(servDelay);
     }
 
   } else {
     //OFF
-    tServo.write(0);
+    servoE1.write(0);
     Serial.println("OFF");
   }
 
@@ -142,7 +162,7 @@ void loop() {
       }
     }
 
-    if (isOn3 == true) {
+    if (isOn3 == true) {  //ON
       event4 = true;
 
 
@@ -165,7 +185,7 @@ void loop() {
       }
     }
 
-    if (isOn4 == true) {
+    if (isOn4 == true) {  //ON
       event5 = true;
 
 
@@ -186,7 +206,7 @@ void loop() {
       }
     }
 
-    if (isOn5 == true) {
+    if (isOn5 == true) {  //ON
 
 
 
@@ -204,3 +224,4 @@ void loop() {
   prevButtonState3 = buttonState3;
   prevButtonState4 = buttonState4;
   prevButtonState5 = buttonState5;
+}
