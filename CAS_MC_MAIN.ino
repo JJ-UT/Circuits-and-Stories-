@@ -4,8 +4,8 @@ const int ledPin = 9;
 
 /// Buttons///////////
 
-const int button1 = 1;
-const int button2 = 2;
+const int button1 = 2;
+const int button2 = 0;
 const int button3 = 3;
 const int button4 = 4;
 const int button5 = 5;
@@ -83,16 +83,16 @@ void setup() {
   Serial.begin(9600);
 
   servoE1.attach(6);   /// SERVO PIN
-  servoE1.attach(7);   /// SERVO PIN
-  servoE1.attach(8);   /// SERVO PIN
-  servoE1.attach(9);   /// SERVO PIN
-  servoE1.attach(10);  /// SERVO PIN
+  servoE2.attach(7);   /// SERVO PIN
+  servoE3.attach(8);   /// SERVO PIN
+  servoE4.attach(9);   /// SERVO PIN
+  servoE5.attach(10);  /// SERVO PIN
 }
 
 
 void loop() {
   buttonState1 = digitalRead(button1);
-  Serial.println(angle);
+  //Serial.println(angle);
 
   ///// EVENT 1//////////////////////////
   //////////////////////////////////////
@@ -111,12 +111,12 @@ void loop() {
     event2 = true;
 
 
-    for (pos = 0; pos <= 120; pos = pos + 1.5) {
+    for (pos = 0; pos <= 36.5; pos = pos + 1.5) {
       servoE1.write(pos);
       delay(servDelay);
     }
 
-    for (pos = 120; pos >= 0; pos = pos - 1.5) {
+    for (pos = 36.5; pos >= 0; pos = pos - 1.5) {
       servoE1.write(pos);
       delay(servDelay);
     }
@@ -141,7 +141,7 @@ void loop() {
 
     if (isOn2 == true) {
       event3 = true;
-
+      
 
 
 
@@ -197,6 +197,8 @@ void loop() {
     }
   }
 
+  ////////////// EVENT 5////////////////////
+  //////////////////////////////////////////
   if (event5 == true) {
     buttonState5 = digitalRead(button5);
     if (buttonState5 != prevButtonState5) {
