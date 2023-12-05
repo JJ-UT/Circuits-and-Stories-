@@ -88,7 +88,7 @@ void setup() {
   servoE5.attach(13);  /// SERVO PIN
 }
 
-
+// function reads the states of the buttons, if a button is activated, an event will happen specifcally coded to that button
 void loop() {
   buttonState1 = digitalRead(button1);
   buttonState2 = digitalRead(button2);
@@ -115,6 +115,7 @@ void loop() {
     }
   }
 
+  //If button is on, servo swivels back and forth 
   if (isOn == true) {
     // event2 = true;
 
@@ -148,6 +149,7 @@ void loop() {
         Serial.println("button 2 on ");
         isOn2 = !isOn2;
       }
+      //if button is on, rotate servo by 90 degrees
       if (isOn2 == true) {
       //event3 = true;
         
@@ -179,6 +181,8 @@ void loop() {
         isOn3 = !isOn3;
       }
     }
+
+  // same button as event 2
        if (isOn3 == true) {  //ON
       //event4 = true;
       
@@ -212,7 +216,7 @@ void loop() {
         isOn4 = !isOn4;
       }
     }
-
+// if button is on, rotate servo by 40 degrees
     if (isOn4 == true) {  //ON
       event5 = true;
 
@@ -256,6 +260,7 @@ void loop() {
         isOn5 = !isOn5;
       }
     }
+  // if button is on, rotate swivel back anf forth (code for the waves.)
      if (isOn5 == true) {  //ON
                //servoE5.write(36.5);
            for (pos2 = 0; pos2 <= 36.5; pos2 = pos2 + 1.5) {
